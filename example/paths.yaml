@@ -1,0 +1,4 @@
+/path1:
+  $ref: ./path_1.yaml#/response
+/path2:
+  $ref: ./path_2.yaml

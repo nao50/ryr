@@ -1,5 +1,4 @@
-ryr
-===
+# ryr
 
 Resolving yaml refs
 
@@ -9,11 +8,15 @@ Resolving yaml refs
 [![License](https://img.shields.io/npm/l/ryr.svg)](https://github.com/nao50/ryr/blob/master/package.json)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+- [Usage](#usage)
+- [Commands](#commands)
 <!-- tocstop -->
+
 # Usage
+
 <!-- usage -->
+
 ```sh-session
 $ npm install -g ryr
 $ ryr COMMAND
@@ -25,8 +28,16 @@ USAGE
   $ ryr COMMAND
 ...
 ```
+
 <!-- usagestop -->
+
 # Commands
+
 <!-- commands -->
 
 <!-- commandsstop -->
+
+# Dependencies
+
+https://github.com/nodeca/js-yaml
+https://github.com/whitlockjc/json-refs
