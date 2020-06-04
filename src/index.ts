@@ -37,14 +37,13 @@ class Ryr extends Command {
       process.exit(1);
     }
 
+    // TODO: https://github.com/whitlockjc/json-refs/issues/179
     // const root = YAML.safeLoad(fs.readFileSync(inputFile).toString());
-
     fs.writeFileSync("tmp.yaml", YAML.safeDump({ $ref: inputFile }), "utf8");
     const root = YAML.safeLoad(fs.readFileSync("tmp.yaml").toString());
 
     const options: jsonRefs.JsonRefsOptions = {
       filter: ["relative", "remote", "invalid"],
-      // location: "./" + inputFile,
       resolveCirculars: true,
       includeInvalid: true,
       loaderOptions: {
@@ -86,6 +85,7 @@ class Ryr extends Command {
             "utf8",
             (err) => {
               if (err) {
+                // TODO: https://github.com/whitlockjc/json-refs/issues/179
                 fs.unlink("tmp.yaml", (err) => {
                   if (err) throw err;
                 });
@@ -94,6 +94,7 @@ class Ryr extends Command {
               }
             }
           );
+          // TODO: https://github.com/whitlockjc/json-refs/issues/179
           fs.unlink("tmp.yaml", (err) => {
             if (err) throw err;
           });
