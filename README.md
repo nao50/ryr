@@ -67,5 +67,6 @@ paths:
 
 # Dependencies
 
+https://github.com/oclif/oclif
 https://github.com/nodeca/js-yaml
 https://github.com/whitlockjc/json-refs
