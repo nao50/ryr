@@ -5,6 +5,9 @@ response:
         description: OK
         schema:
           $ref: "#/nested/SameFileReference"
+hoge:
+  huga:
+    ababa: true
 nested:
   SameFileReference:
     type: object

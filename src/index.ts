@@ -37,17 +37,24 @@ class Ryr extends Command {
       process.exit(1);
     }
 
-    const root = YAML.safeLoad(fs.readFileSync(inputFile).toString());
+    // const root = YAML.safeLoad(fs.readFileSync(inputFile).toString());
+
+    fs.writeFileSync("tmp.yaml", YAML.safeDump({ $ref: inputFile }), "utf8");
+    const root = YAML.safeLoad(fs.readFileSync("tmp.yaml").toString());
+
     const options: jsonRefs.JsonRefsOptions = {
       filter: ["relative", "remote", "invalid"],
-      loaderOptions: {
-        processContent: (res: any, callback: any) => {
-          callback(null, YAML.safeLoad(res.text));
-        },
-      },
+      // location: "./" + inputFile,
       resolveCirculars: true,
       includeInvalid: true,
+      loaderOptions: {
+        processContent: (res: any, callback: any) => {
+          callback(undefined, YAML.safeLoad(res.text));
+        },
+      },
     };
+
+    jsonRefs.clearCache();
 
     jsonRefs
       .resolveRefs(root, options)
@@ -79,11 +86,17 @@ class Ryr extends Command {
             "utf8",
             (err) => {
               if (err) {
+                fs.unlink("tmp.yaml", (err) => {
+                  if (err) throw err;
+                });
                 console.error(err.message);
                 process.exit(1);
               }
             }
           );
+          fs.unlink("tmp.yaml", (err) => {
+            if (err) throw err;
+          });
           // Output to json
         } else if (flags.outputFormat === "json") {
           console.log(JSON.stringify(results.resolved, null, 2));
