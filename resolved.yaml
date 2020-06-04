@@ -1,0 +1,25 @@
+openapi: 3.0.0
+info:
+  version: 0.0.0
+  title: Example YAML file
+paths:
+  /path1:
+    get:
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+  /path2:
+    get:
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              name:
+                type: string

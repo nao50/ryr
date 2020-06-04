@@ -1,41 +1,69 @@
-# ryr
-
-Resolving yaml refs
-
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/ryr.svg)](https://npmjs.org/package/ryr)
 [![Downloads/week](https://img.shields.io/npm/dw/ryr.svg)](https://npmjs.org/package/ryr)
 [![License](https://img.shields.io/npm/l/ryr.svg)](https://github.com/nao50/ryr/blob/master/package.json)
 
-<!-- toc -->
+# ryr
 
-- [Usage](#usage)
-- [Commands](#commands)
-<!-- tocstop -->
+Resolving yaml refs CLI tool.
+
+# Caution
+
+This tool is still under development, so please use it as an alpha version.  
+So I won't be uploading it to npm and such for now.
 
 # Usage
 
-<!-- usage -->
-
 ```sh-session
-$ npm install -g ryr
-$ ryr COMMAND
-running command...
-$ ryr (-v|--version|version)
-ryr/0.0.1 darwin-x64 node-v12.6.0
-$ ryr --help [COMMAND]
-USAGE
-  $ ryr COMMAND
-...
+$ git clone https://github.com/nao50/ryr.git && cd ryr
+$ npm install
+$ npm link
 ```
-
-<!-- usagestop -->
 
 # Commands
 
-<!-- commands -->
+```sh-session
+$ ryr --help
 
-<!-- commandsstop -->
+USAGE
+  $ ryr INPUTFILE
+
+ARGUMENTS
+  INPUTFILE  The YAML file you're trying to solve
+
+OPTIONS
+  -h, --help             show CLI help
+  -v, --version          show CLI version
+  -o, --outputFile       [default: resolved] output file name
+  -f, --outputFormat     output file format
+
+$ ryr ./example/index.yaml --outputFormat yaml
+openapi: 3.0.0
+info:
+  version: 0.0.0
+  title: Example YAML file
+paths:
+  /path1:
+    get:
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+  /path2:
+    get:
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+```
 
 # Dependencies
 
